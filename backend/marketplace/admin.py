@@ -5,6 +5,7 @@ from .models import (
     ProduceType,
     Location,
     Produce,
+    Demand,
 )
 
 
@@ -65,4 +66,34 @@ class ProduceAdmin(admin.ModelAdmin):
         "created_at",
         "updated_at",
         "available_until",
+    )
+
+@admin.register(Demand)
+class DemandAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "buyer",
+        "produce_type",
+        "location",
+        "minimum_quantity",
+        "maximum_quantity",
+        "maximum_budget",
+        "status",
+    )
+
+    list_filter = (
+        "category",
+        "status",
+        "organic_required",
+    )
+
+    search_fields = (
+        "buyer__username",
+        "produce_type__name",
+        "location__town",
+    )
+
+    readonly_fields = (
+        "created_at",
+        "updated_at",
     )

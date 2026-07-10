@@ -174,3 +174,109 @@ class Produce(models.Model):
 
     def __str__(self):
         return f"{self.produce_type.name} - {self.farmer.username}"
+    
+
+class Demand(models.Model):
+    """
+    Produce demand created by a buyer.
+    """
+    OPEN = "Open"
+    MATCHED = "Matched"
+    CLOSED = "Closed"
+    CANCELLED = "Cancelled"
+
+    STATUS_CHOICES = [
+        (OPEN, "Open"),
+        (MATCHED, "Matched"),
+        (CLOSED, "Closed"),
+        (CANCELLED, "Cancelled"),
+    ]
+
+    GRADE_CHOICES = [
+        ("Premium", "Premium"),
+        ("Grade A", "Grade A"),
+        ("Grade B", "Grade B"),
+        ("Standard", "Standard"),
+    ]
+
+    buyer = models.ForeignKey(
+        settings.AUTH_USER_MODEL,
+        on_delete=models.CASCADE,
+        related_name="demands"
+    )
+
+    category = models.ForeignKey(
+        Category,
+        on_delete=models.CASCADE,
+        related_name="demands"
+    )
+
+    produce_type = models.ForeignKey(
+        ProduceType,
+        on_delete=models.CASCADE,
+        related_name="demands"
+    )
+
+    location = models.ForeignKey(
+        Location,
+        on_delete=models.CASCADE,
+        related_name="demands"
+    )
+
+    variety = models.CharField(
+        max_length=100,
+        blank=True
+    )
+
+    description = models.TextField()
+
+    minimum_quantity = models.PositiveIntegerField()
+
+    maximum_quantity = models.PositiveIntegerField()
+
+    unit = models.CharField(
+        max_length=50
+    )
+
+    minimum_budget = models.DecimalField(
+        max_digits=10,
+        decimal_places=2
+    )
+
+    maximum_budget = models.DecimalField(
+        max_digits=10,
+        decimal_places=2
+    )
+
+    maximum_distance_km = models.PositiveIntegerField(
+        default=20
+    )
+
+    organic_required = models.BooleanField(
+        default=False
+    )
+
+    minimum_grade = models.CharField(
+        max_length=20,
+        choices=GRADE_CHOICES,
+        default="Standard"
+    )
+
+    needed_before = models.DateField()
+
+    status = models.CharField(
+        max_length=20,
+        choices=STATUS_CHOICES,
+        default=OPEN
+    )
+
+    created_at = models.DateTimeField(
+        auto_now_add=True
+    )
+
+    updated_at = models.DateTimeField(
+        auto_now=True
+    )
+
+    def __str__(self):
+        return f"{self.buyer.username} needs {self.produce_type.name}"
