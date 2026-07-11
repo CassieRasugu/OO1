@@ -78,17 +78,17 @@ function CategorySelection({ mode }) {
 
     function handleClick(category){
 
-        if(mode==="produce"){
+      if(mode === "produce"){
 
-            navigate(`/produce/new?category=${category.id}`);
+          navigate(`/produce/${category.id}`);
 
-        }
+          }
 
-        else{
+         else{
 
-            navigate(`/demand/new?category=${category.id}`);
+        navigate(`/demand/${category.id}`);
 
-        }
+       }
 
     }
 
