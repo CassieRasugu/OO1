@@ -1,35 +1,105 @@
-body {
-    margin: 0;
-    font-family: Arial, Helvetica, sans-serif;
+.landing{
+
+height:100vh;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+background:#f8fff8;
+
 }
 
-.landing {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100vh;
+.landing h1{
+
+font-size:3rem;
+
+color:var(--primary-green);
+
+margin-bottom:10px;
+
 }
 
-.cards {
-    display: flex;
-    gap: 50px;
-    margin-top: 40px;
+.landing p{
+
+font-size:18px;
+
+margin-bottom:50px;
+
+color:#666;
+
 }
 
-.card {
-    width: 250px;
-    height: 250px;
-    border-radius: 12px;
-    border: 1px solid #ddd;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    cursor: pointer;
-    transition: .3s;
+.cards{
+
+display:flex;
+
+gap:40px;
+
 }
 
-.card:hover {
-    transform: scale(1.05);
+.card{
+
+width:280px;
+
+height:280px;
+
+display:flex;
+
+flex-direction:column;
+
+justify-content:center;
+
+align-items:center;
+
+border-radius:15px;
+
+cursor:pointer;
+
+transition:.3s;
+
+background:white;
+
+box-shadow:var(--shadow-sm);
+
+}
+
+.card:hover{
+
+transform:translateY(-8px);
+
+box-shadow:var(--shadow-lg);
+
+}
+
+.card h2{
+
+margin-bottom:15px;
+
+color:var(--primary-green);
+
+}
+
+.login-link{
+
+margin-top:40px;
+
+font-size:18px;
+
+}
+
+.login-link span{
+
+margin-left:10px;
+
+color:var(--primary-green);
+
+cursor:pointer;
+
+font-weight:bold;
+
 }
