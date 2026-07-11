@@ -25,7 +25,12 @@ class User(AbstractUser):
         blank=True
     )
 
-    location = models.CharField(
+    county = models.CharField(
+        max_length=100,
+        blank=True
+    )
+
+    town = models.CharField(
         max_length=100,
         blank=True
     )
@@ -34,6 +39,10 @@ class User(AbstractUser):
         upload_to="profiles/",
         blank=True,
         null=True
+    )
+
+    bio = models.TextField(
+        blank=True
     )
 
     def __str__(self):
