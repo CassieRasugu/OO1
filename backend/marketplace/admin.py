@@ -44,7 +44,7 @@ class ProduceAdmin(admin.ModelAdmin):
         "location",
         "quantity_available",
         "unit",
-        "total_price",
+        "price_per_unit",
         "availability_status",
         "available_until",
     )

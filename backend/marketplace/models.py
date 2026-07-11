@@ -133,11 +133,10 @@ class Produce(models.Model):
         max_length=50
     )
 
-    total_price = models.DecimalField(
-        max_digits=10,
-        decimal_places=2
-    )
-
+    price_per_unit = models.DecimalField(
+    max_digits=10,
+    decimal_places=2
+   )
     harvest_date = models.DateField()
 
     shelf_life_days = models.PositiveIntegerField(
