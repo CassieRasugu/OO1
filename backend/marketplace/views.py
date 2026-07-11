@@ -53,3 +53,6 @@ class ProduceCreateAPIView(generics.CreateAPIView):
             farmer=self.request.user
 
         )
+class CategoryDetailAPIView(generics.RetrieveAPIView):
+    queryset = Category.objects.all()
+    serializer_class = CategorySerializer

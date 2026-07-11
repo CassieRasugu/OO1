@@ -5,6 +5,7 @@ from .views import (
     ProduceTypeListAPIView,
     LocationListAPIView,
     ProduceCreateAPIView,
+    CategoryDetailAPIView,
 )
 
 urlpatterns = [
@@ -35,6 +36,12 @@ urlpatterns = [
 
     name="produce-create",
 
+    ),
+
+    path(
+    "categories/<int:pk>/",
+    CategoryDetailAPIView.as_view(),
+    name="category-detail",
     ),
 
 ]
