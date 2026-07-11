@@ -96,6 +96,16 @@ class Produce(models.Model):
         ("Standard", "Standard"),
     ]
 
+    UNIT_CHOICES = [
+    ("kg", "Kilograms"),
+    ("g", "Grams"),
+    ("ton", "Tonnes"),
+    ("crate", "Crates"),
+    ("bag", "Bags"),
+    ("piece", "Pieces"),
+    ("litre", "Litres"),
+    ]
+
     farmer = models.ForeignKey(
         settings.AUTH_USER_MODEL,
         on_delete=models.CASCADE,
@@ -130,7 +140,8 @@ class Produce(models.Model):
     quantity_available = models.PositiveIntegerField()
 
     unit = models.CharField(
-        max_length=50
+    max_length=20,
+    choices=UNIT_CHOICES,
     )
 
     price_per_unit = models.DecimalField(
@@ -197,6 +208,15 @@ class Demand(models.Model):
         ("Grade B", "Grade B"),
         ("Standard", "Standard"),
     ]
+    UNIT_CHOICES = [
+    ("kg", "Kilograms"),
+    ("g", "Grams"),
+    ("ton", "Tonnes"),
+    ("crate", "Crates"),
+    ("bag", "Bags"),
+    ("piece", "Pieces"),
+    ("litre", "Litres"),
+    ]
 
     buyer = models.ForeignKey(
         settings.AUTH_USER_MODEL,
@@ -234,7 +254,8 @@ class Demand(models.Model):
     maximum_quantity = models.PositiveIntegerField()
 
     unit = models.CharField(
-        max_length=50
+    max_length=20,
+    choices=UNIT_CHOICES,
     )
 
     minimum_budget = models.DecimalField(
