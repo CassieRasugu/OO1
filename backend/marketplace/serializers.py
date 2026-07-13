@@ -1,6 +1,11 @@
 from rest_framework import serializers
 
-from .models import Category, ProduceType, Location, Produce
+from .models import (
+    Category,
+    ProduceType,
+    Location,
+    Produce,
+)
 
 
 class CategorySerializer(serializers.ModelSerializer):
@@ -11,6 +16,7 @@ class CategorySerializer(serializers.ModelSerializer):
             "id",
             "name",
         ]
+
 
 class ProduceTypeSerializer(serializers.ModelSerializer):
 
@@ -32,7 +38,26 @@ class LocationSerializer(serializers.ModelSerializer):
             "town",
             "county",
         ]
+
+
 class ProduceSerializer(serializers.ModelSerializer):
+
+    produce_type_name = serializers.CharField(
+        source="produce_type.name",
+        read_only=True
+    )
+
+    category_name = serializers.CharField(
+        source="category.name",
+        read_only=True
+    )
+
+    location_name = serializers.SerializerMethodField()
+
+    farmer_name = serializers.CharField(
+        source="farmer.username",
+        read_only=True
+    )
 
     class Meta:
 
@@ -46,3 +71,7 @@ class ProduceSerializer(serializers.ModelSerializer):
             "created_at",
             "updated_at",
         )
+
+    def get_location_name(self, obj):
+
+        return f"{obj.location.town}, {obj.location.county}"

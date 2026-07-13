@@ -56,3 +56,17 @@ class ProduceCreateAPIView(generics.CreateAPIView):
 class CategoryDetailAPIView(generics.RetrieveAPIView):
     queryset = Category.objects.all()
     serializer_class = CategorySerializer
+
+class FarmerProduceListAPIView(generics.ListAPIView):
+
+    serializer_class = ProduceSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+
+        return Produce.objects.filter(
+
+            farmer=self.request.user
+
+        ).order_by("-created_at")

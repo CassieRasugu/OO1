@@ -6,6 +6,7 @@ from .views import (
     LocationListAPIView,
     ProduceCreateAPIView,
     CategoryDetailAPIView,
+    FarmerProduceListAPIView,
 )
 
 urlpatterns = [
@@ -43,5 +44,14 @@ urlpatterns = [
     CategoryDetailAPIView.as_view(),
     name="category-detail",
     ),
+    path(
+
+    "my-produce/",
+
+    FarmerProduceListAPIView.as_view(),
+
+    name="my-produce",
+
+),
 
 ]
