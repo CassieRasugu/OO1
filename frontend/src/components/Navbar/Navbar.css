@@ -1,39 +1,143 @@
 .navbar{
 
-height:75px;
+    height:75px;
 
-display:flex;
+    background:white;
 
-justify-content:space-between;
+    display:flex;
 
-align-items:center;
+    justify-content:space-between;
 
-padding:0 40px;
+    align-items:center;
 
-background:#f7fff7;
+    padding:0 40px;
+
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+
+    position:sticky;
+
+    top:0;
+
+    z-index:1000;
 
 }
 
 .logo{
 
-height:50px;
+    color:#2E7D32;
+
+    cursor:pointer;
+
+    font-size:28px;
+
+    font-weight:bold;
 
 }
 
 .navbar-icons{
 
-display:flex;
+    display:flex;
 
-gap:25px;
+    align-items:center;
+
+    gap:25px;
 
 }
 
 .icon{
 
-font-size:32px;
+    font-size:30px;
 
-color:#2E8B2E;
+    color:#2E7D32;
 
-cursor:pointer;
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.icon:hover{
+
+    transform:scale(1.1);
+
+}
+
+.profile-section{
+
+    position:relative;
+
+}
+
+.profile-menu{
+
+    position:absolute;
+
+    top:55px;
+
+    right:0;
+
+    width:220px;
+
+    background:white;
+
+    border-radius:15px;
+
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+
+    padding:20px;
+
+}
+
+.profile-menu h3{
+
+    margin:0;
+
+}
+
+.profile-menu p{
+
+    color:gray;
+
+    margin-bottom:15px;
+
+}
+
+.profile-menu button{
+
+    width:100%;
+
+    padding:12px;
+
+    margin-top:10px;
+
+    border:none;
+
+    border-radius:10px;
+
+    cursor:pointer;
+
+    background:#f5f5f5;
+
+    font-weight:600;
+
+}
+
+.profile-menu button:hover{
+
+    background:#E8F5E9;
+
+}
+
+.logout-btn{
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    gap:8px;
+
+    color:#d32f2f;
 
 }

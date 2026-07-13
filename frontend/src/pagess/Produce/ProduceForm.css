@@ -1,74 +1,342 @@
+/* ===========================
+   PAGE LAYOUT
+=========================== */
+
 .produce-page{
     display:flex;
     min-height:100vh;
-    background:#f8faf8;
+    background:#f5f7f4;
 }
 
+
+/* ===========================
+   SIDEBAR
+=========================== */
+
 .sidebar{
-    width:230px;
+    width:240px;
     background:white;
-    padding:30px;
-    border-right:1px solid #ddd;
+    padding:30px 20px;
+    border-right:1px solid #e5e5e5;
+    position:sticky;
+    top:0;
+    height:100vh;
+    overflow-y:auto;
 }
 
 .sidebar h3{
-    color:#228B22;
+    color:#2E7D32;
     margin-bottom:20px;
+    font-size:22px;
 }
 
 .sidebar button{
-    display:block;
+
     width:100%;
+
+    padding:14px;
+
     margin-bottom:12px;
-    padding:12px;
+
     border:none;
-    background:white;
+
+    border-radius:12px;
+
+    background:#f2f2f2;
+
     cursor:pointer;
-    text-align:left;
-    border-radius:8px;
+
+    transition:.3s;
+
+    font-size:15px;
+
+    font-weight:600;
+
 }
 
 .sidebar button:hover{
-    background:#edf9ed;
+
+    background:#E8F5E9;
+
 }
 
-.active{
-    background:#2E8B57 !important;
+.sidebar .active{
+
+    background:#2E7D32;
+
     color:white;
+
 }
+
+
+/* ===========================
+   FORM SECTION
+=========================== */
 
 .produce-form{
+
     flex:1;
-    padding:50px;
+
+    padding:45px;
+
 }
 
 .produce-form h1{
-    color:#2E8B57;
-    margin-bottom:30px;
+
+    color:#2E7D32;
+
+    margin-bottom:5px;
+
 }
 
-form{
-    display:grid;
-    gap:18px;
-    max-width:700px;
+.subtitle{
+
+    color:gray;
+
+    margin-bottom:35px;
+
 }
 
-input,
-textarea,
-select{
-    padding:12px;
-    border:1px solid #ccc;
-    border-radius:8px;
-    font-size:16px;
+
+/* ===========================
+   FORM
+=========================== */
+
+.produce-form form{
+
+    background:white;
+
+    padding:35px;
+
+    border-radius:20px;
+
+    box-shadow:0 6px 18px rgba(0,0,0,.08);
+
 }
 
-button[type="submit"]{
-    margin-top:20px;
-    background:#2E8B57;
-    color:white;
-    border:none;
-    padding:15px;
+.produce-form label{
+
+    display:block;
+
+    margin-top:18px;
+
+    margin-bottom:8px;
+
+    font-weight:600;
+
+    color:#333;
+
+}
+
+.produce-form input,
+
+.produce-form textarea,
+
+.produce-form select{
+
+    width:100%;
+
+    padding:14px;
+
     border-radius:10px;
+
+    border:1px solid #d8d8d8;
+
+    font-size:15px;
+
+    outline:none;
+
+    transition:.2s;
+
+    box-sizing:border-box;
+
+}
+
+.produce-form input:focus,
+
+.produce-form textarea:focus,
+
+.produce-form select:focus{
+
+    border:1px solid #2E7D32;
+
+    box-shadow:0 0 0 3px rgba(46,125,50,.15);
+
+}
+
+.produce-form textarea{
+
+    resize:vertical;
+
+}
+
+
+/* ===========================
+   CHECKBOX
+=========================== */
+
+.checkbox{
+
+    display:flex !important;
+
+    align-items:center;
+
+    gap:12px;
+
+    margin-top:25px;
+
+}
+
+.checkbox input{
+
+    width:auto;
+
+}
+
+
+/* ===========================
+   ESTIMATED VALUE CARD
+=========================== */
+
+.estimate-card{
+
+    margin-top:35px;
+
+    background:linear-gradient(135deg,#43A047,#2E7D32);
+
+    color:white;
+
+    padding:25px;
+
+    border-radius:18px;
+
+}
+
+.estimate-card h3{
+
+    margin:0;
+
     font-size:18px;
+
+}
+
+.estimate-card h2{
+
+    margin-top:12px;
+
+    font-size:34px;
+
+}
+
+
+/* ===========================
+   BUTTON
+=========================== */
+
+.submit-btn{
+
+    margin-top:35px;
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:12px;
+
+    background:#2E7D32;
+
+    color:white;
+
+    font-size:17px;
+
+    font-weight:bold;
+
     cursor:pointer;
+
+    transition:.3s;
+
+}
+
+.submit-btn:hover{
+
+    background:#1B5E20;
+
+}
+
+.submit-btn:disabled{
+
+    background:#9E9E9E;
+
+    cursor:not-allowed;
+
+}
+
+
+/* ===========================
+   ERROR
+=========================== */
+
+.error-box{
+
+    background:#FFEBEE;
+
+    color:#C62828;
+
+    padding:15px;
+
+    border-radius:10px;
+
+    margin-bottom:25px;
+
+    font-weight:600;
+
+}
+
+
+/* ===========================
+   RESPONSIVE
+=========================== */
+
+@media(max-width:1000px){
+
+    .produce-page{
+
+        flex-direction:column;
+
+    }
+
+    .sidebar{
+
+        width:100%;
+
+        height:auto;
+
+        position:relative;
+
+        display:flex;
+
+        flex-wrap:wrap;
+
+        gap:10px;
+
+    }
+
+    .sidebar button{
+
+        width:auto;
+
+        flex:1;
+
+        min-width:140px;
+
+    }
+
+    .produce-form{
+
+        padding:20px;
+
+    }
+
 }
