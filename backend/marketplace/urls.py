@@ -7,6 +7,8 @@ from .views import (
     ProduceCreateAPIView,
     CategoryDetailAPIView,
     FarmerProduceListAPIView,
+    DemandCreateAPIView,
+    BuyerDemandListAPIView,
 )
 
 urlpatterns = [
@@ -52,6 +54,19 @@ urlpatterns = [
 
     name="my-produce",
 
-),
+    ),
+    
+    path(
+        "demands/",
+        DemandCreateAPIView.as_view(),
+        name="demand-create",
+    ),
+
+    path(
+        "my-demands/",
+        BuyerDemandListAPIView.as_view(),
+        name="my-demands",
+    ),
+
 
 ]

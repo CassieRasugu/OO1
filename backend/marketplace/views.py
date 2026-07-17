@@ -7,6 +7,7 @@ from .serializers import (
     ProduceTypeSerializer,
     LocationSerializer,
     ProduceSerializer,
+    DemandSerializer
 )
 
 
@@ -70,3 +71,35 @@ class FarmerProduceListAPIView(generics.ListAPIView):
             farmer=self.request.user
 
         ).order_by("-created_at")
+    
+class DemandCreateAPIView(generics.CreateAPIView):
+
+    serializer_class = DemandSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def perform_create(self, serializer):
+
+        serializer.save(
+
+            buyer=self.request.user
+
+        )
+
+
+class BuyerDemandListAPIView(generics.ListAPIView):
+
+    serializer_class = DemandSerializer
+
+    permission_classes = [IsAuthenticated]
+
+    def get_queryset(self):
+
+        return Demand.objects.filter(
+
+            buyer=self.request.user
+
+        ).order_by("-created_at")
+    
+
+    

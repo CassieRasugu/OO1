@@ -5,6 +5,7 @@ from .models import (
     ProduceType,
     Location,
     Produce,
+    Demand,
 )
 
 
@@ -75,3 +76,61 @@ class ProduceSerializer(serializers.ModelSerializer):
     def get_location_name(self, obj):
 
         return f"{obj.location.town}, {obj.location.county}"
+    
+class DemandSerializer(serializers.ModelSerializer):
+
+    produce_type_name = serializers.CharField(
+        source="produce_type.name",
+        read_only=True
+    )
+
+    category_name = serializers.CharField(
+        source="category.name",
+        read_only=True
+    )
+
+    location_name = serializers.SerializerMethodField()
+
+    buyer_name = serializers.CharField(
+        source="buyer.username",
+        read_only=True
+    )
+
+    class Meta:
+
+        model = Demand
+
+        fields = "__all__"
+
+        read_only_fields = (
+            "buyer",
+            "status",
+            "created_at",
+            "updated_at",
+        )
+
+    def get_location_name(self, obj):
+
+        return f"{obj.location.town}, {obj.location.county}"
+
+    def validate(self, data):
+
+        min_qty = data.get("minimum_quantity")
+        max_qty = data.get("maximum_quantity")
+
+        if min_qty is not None and max_qty is not None:
+            if min_qty > max_qty:
+                raise serializers.ValidationError(
+                    "Minimum quantity cannot exceed maximum quantity."
+                )
+
+        min_budget = data.get("minimum_budget")
+        max_budget = data.get("maximum_budget")
+
+        if min_budget is not None and max_budget is not None:
+            if min_budget > max_budget:
+                raise serializers.ValidationError(
+                    "Minimum budget cannot exceed maximum budget."
+                )
+
+        return data
